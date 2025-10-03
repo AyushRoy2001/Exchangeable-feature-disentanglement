@@ -49,12 +49,26 @@ We also provide Heatmaps of the last encoder layer, last decoder layer, and the 
   <img src="./figs/Heatmaps.png" alt="Heatmaps" height="50%" width="50%">
 </p>
 
+## Data Addition Dilemma
+The data addition can be achieved by modifying a subset of the data loader with this (k is the number of samples you want for the paritcular iteration of data addition)
+```
+size = 512   # image size: 512x512
+root_path = '/kaggle/input/tnbc-seg/MonuSeg/MonuSeg/Training'
+X_train_dil, y_train_dil = load_data_training(root_path, size)
+y_train_dil = np.expand_dims(y_train_dil, -1)
+X_train_dil = X_train_dil[:k]
+y_train_dil = y_train_dil[:k]
 
+X_train = np.concatenate((X_train, X_train_dil))
+y_train = np.concatenate((y_train, y_train_dil))
+print("####DATA DILEMMA####")
+print("X:", X_train.shape)
+print("y:", y_train.shape)
 ```
 
-We also provide Heatmaps of the last encoder layer, last decoder layer, and the bottleneck layer of the UNets with and without the use of feature disentanglemen loss in the figure below.
 
-![](./figs/token_attn_map_supp-1.png)
+
+```
 
 # Citation
 
