@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  ¹ University at Buffalo, SUNY &bull; ² POSTECH
+  ¹ University at Buffalo, SUNY &bull; ² Pohang University of Science and Technology (POSTECH)
 </p>
 
 ## Abstract
