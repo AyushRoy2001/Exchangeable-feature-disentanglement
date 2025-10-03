@@ -50,7 +50,7 @@ We also provide Heatmaps of the last encoder layer, last decoder layer, and the 
 </p>
 
 ## Data Addition Dilemma
-The data addition can be achieved by modifying a subset of the data loader with this (k is the number of samples you want for the paritcular iteration of data addition)
+The data addition can be achieved by modifying a subset of the data loader with this (k is the number of samples you want for the paritcular iteration of data addition):
 ```
 size = 512   # image size: 512x512
 root_path = '/kaggle/input/tnbc-seg/MonuSeg/MonuSeg/Training'
@@ -66,21 +66,31 @@ print("X:", X_train.shape)
 print("y:", y_train.shape)
 ```
 
-
-
+To implement the exchangeable feature disentanglement loss, replace the feature disentanglement loss with this (the code below is an example for the loss between the 2nd decoder and encoder layers and can be exactly used to replace the loss between the other layers):
+```
+def de_2_loss_enc(y_true, y_pred):
+    y_true = Pool()(y_true)
+    fg, bg = extract_features(y_true, y_pred)
+    loss_dir = ReduceMeanLoss(-1,False)(-tf.math.log(tf.norm(fg - bg, axis=0)))
+    fg_shu = tf.random.shuffle(fg) #### This is the part introducing exchangeability among the foregroudn and background features
+    bg_shu = tf.random.shuffle(bg) #### This is the part introducing exchangeability among the foregroudn and background features
+    loss_shu = ReduceMeanLoss(-1,False)(-tf.math.log(tf.norm(fg_shu - bg_shu, axis=0)))
+    loss = weight_1_enc*(loss_dir + loss_shu)
+    return loss
 ```
 
+We provide the sequential Datat Addition plot in the figure below.
+
+<p align="center">
+  <img src="./figs/Data_Addition_Dilemma.png" alt="Data_addition" height="50%" width="50%">
+</p>
+
 # Citation
-
-
 ```bibtex
-@misc{devulapally2025textencoderobjectlevelwatermarking,
-      title={Your Text Encoder Can Be An Object-Level Watermarking Controller}, 
-      author={Naresh Kumar Devulapally and Mingzhen Huang and Vishal Asnani and Shruti Agarwal and Siwei Lyu and Vishnu Suresh Lokhande},
-      year={2025},
-      eprint={2503.11945},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2503.11945}, 
+@article{roy2025exchangeability,
+  title={Is Exchangeability better than IID to handle Data Distribution Shifts while Pooling Data for Data-scarce Medical image segmentation?},
+  author={Roy, Ayush and Enam, Samin and Xia, Jun and Lokhande, Vishnu Suresh and Kim, Won Hwa},
+  journal={arXiv preprint arXiv:2507.19575},
+  year={2025}
 }
 ```
