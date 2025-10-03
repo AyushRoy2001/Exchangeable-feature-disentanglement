@@ -1,4 +1,4 @@
-<img width="832" height="310" alt="Screenshot 2025-10-04 010105" src="https://github.com/user-attachments/assets/fcf40cd4-6958-494c-87f7-add8b3aae7e2" />
+![Teaser Image]<img width="832" height="310" alt="Screenshot 2025-10-04 010105" src="https://github.com/user-attachments/assets/fcf40cd4-6958-494c-87f7-add8b3aae7e2" />
 
 # [arXiv] Is Exchangeability better than I.I.D to handle Data Distribution Shifts while Pooling Data for Data-scarce Medical image segmentation?
 
