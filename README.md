@@ -82,7 +82,7 @@ def de_2_loss_enc(y_true, y_pred):
 We provide the sequential Datat Addition plot in the figure below.
 
 <p align="center">
-  <img src="./figs/Data_Addition_Dilemma.png" alt="Data_addition" height="50%" width="50%">
+  <img src="./figs/Data_Addition_Dilemma.png" alt="Data_addition" height="60%" width="60%">
 </p>
 
 # Citation
