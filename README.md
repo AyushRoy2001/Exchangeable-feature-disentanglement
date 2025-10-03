@@ -1,4 +1,4 @@
-![Teaser Image](./figs/teaser.png)
+<img src="./figs/teaser.png" alt="Teaser Image" width="700">
 
 # [arXiv] Is Exchangeability better than I.I.D to handle Data Distribution Shifts while Pooling Data for Data-scarce Medical image segmentation?
 
