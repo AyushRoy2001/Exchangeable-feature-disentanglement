@@ -47,20 +47,9 @@ Below we see the outputs of th UNets with and without the use of feature disenta
 
 ![](./figs/object_output.png)
 
-We also provide Attention Maps of the watermarking token in the figure below.
+We also provide Heatmaps of the last encoder layer, last decoder layer, and the bottleneck layer of the UNets with and without the use of feature disentanglemen loss in the figure below.
 
 ![](./figs/token_attn_map_supp-1.png)
-
-
-# Acknowledgements
-
-Our codebase is based on the following repos:
-
-1. https://github.com/huggingface/diffusers/blob/main/examples/textual_inversion/README.md
-2. https://github.com/facebookresearch/stable_signature
-3. https://github.com/CompVis/latent-diffusion
-4. https://github.com/Georgefwt/AquaLoRA
-5. https://github.com/google/prompt-to-prompt/
 
 # Citation
 
