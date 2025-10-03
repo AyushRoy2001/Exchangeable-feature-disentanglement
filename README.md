@@ -20,31 +20,8 @@ Data scarcity is a major challenge in medical imaging, particularly for deep lea
 
 ## Installation
 
-Our code repo builds on top of the `ldm` environment of [`compvis/latent-diffusion`](https://github.com/CompVis/latent-diffusion).
-
-Users can close the `CompVis/latent-diffusion` repo and install all requirements using the following commands.
-
 ```bash
-git clone https://github.com/CompVis/latent-diffusion.git
-
-cd latent-diffusion
-
-conda env create -f environment.yaml
-conda activate ldm
-```
-
-We additionally use the `diffusers` library for Textual Inversion training. Specifically we use the following packages:
-
-```bash
-git clone https://github.com/huggingface/diffusers
-cd diffusers
-pip install .
-
-cd examples/textual_inversion
 pip install -r requirements.txt
-
-accelerate config
-accelerate config default
 ```
 
 ## Watermark Detectors
