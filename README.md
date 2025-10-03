@@ -43,9 +43,11 @@ Below we see the outputs of th UNets with and without the use of feature disenta
 
 ![Training Figure](./figs/Qualitative.png)
 
-```
+We also provide Heatmaps of the last encoder layer, last decoder layer, and the bottleneck layer of the UNets with and without the use of feature disentanglemen loss in the figure below.
 
-![](./figs/Heatmaps.png)
+![Heatmaps](./figs/Heatmaps.png)
+
+```
 
 We also provide Heatmaps of the last encoder layer, last decoder layer, and the bottleneck layer of the UNets with and without the use of feature disentanglemen loss in the figure below.
 
