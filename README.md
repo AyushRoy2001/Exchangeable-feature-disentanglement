@@ -27,44 +27,22 @@ conda activate exchg
 pip install -r requirements.txt
 ```
 
-## Watermark Detectors
+## Datasets
+You can follow the official websites of TNBC (Histopathology), MonuSeg (Histopathology), UDIAT (Ultrasound) for downloading.
 
-AquaLoRA: Please refer to [AquaLoRA](./AquaLORA/README.md) for clear instructions to pre-train watermark detector.
+The preprocessed datasets used in this project can be found in the following links:-
 
-HiDDeN: We utilize implementation by `Stable Signature` to pre-train HiDDeN watermark detector. More details are given in [hidden](./hidden/README.md) folder.
+TNBC  and MonuSeg: https://www.kaggle.com/datasets/ayush02102001/tnbc-seg
 
-## Training Token Embeddings for watermarking
+UDIAT: https://www.kaggle.com/datasets/ayush02102001/udiat-segmentation-dataset
 
-![Training Figure](./figs/method_final.jpeg)
+US-TNBC dataset will be provided on request to aroy25@buffalo.edu.
 
-We provide code for training token embeddings for watermarking in [TI_Black_Box](./TI_Black_Box/w_TI_48_bit_aquaLORA.py) folder.
+## Qualitative Results
+Below we see the outputs of th UNets with and without the use of feature disentanglement loss.
 
-All arguments used for training are present in `TI_Black_Box/train_TI_aquaLORA.sh` and training can be run using the following command.
+![Training Figure](./figs/Qualitative.png)
 
-```bash
-bash train_TI_aquaLORA.sh
-```
-
-## Object Level Watermarking
-
-![](./figs/main_qual_new.png)
-
-We follow `google/prompt-to-prompt` to utilize attention maps for object level watermarking.
-
-We provide `[./object-level-watermarking/p2p_ti_object_watermark.ipynb]` jupyter notebook for object level watermarking implementation.
-
-Specifically, we use `AttentionReplace`:
-
-```python
-class AttentionReplace(AttentionControlEdit):
-
-    def replace_cross_attention(self, attn_base, att_replace):
-        return torch.einsum('hpw,bwn->bhpn', attn_base, self.mapper)
-      
-    def __init__(self, prompts, num_steps: int, cross_replace_steps: float, self_replace_steps: float,
-                 local_blend: Optional[LocalBlend] = None):
-        super(AttentionReplace, self).__init__(prompts, num_steps, cross_replace_steps, self_replace_steps, local_blend)
-        self.mapper = seq_aligner.get_replacement_mapper(prompts, tokenizer).to(device)
 ```
 
 ![](./figs/object_output.png)
