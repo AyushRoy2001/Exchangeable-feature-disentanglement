@@ -1,6 +1,6 @@
 <img src="./figs/teaser.png" alt="Teaser Image" width="1000">
 
-# [arXiv] Is Exchangeability better than I.I.D to handle Data Distribution Shifts while Pooling Data for Data-scarce Medical image segmentation?
+# [MIDL 2026] Is Exchangeability better than I.I.D to handle Data Distribution Shifts while Pooling Data for Data-scarce Medical image segmentation?
 
 <p align="center">
   <strong>Ayush Roy</strong>¹ &middot; 
